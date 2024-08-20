@@ -1,0 +1,18 @@
+{
+    "name": "generate-image",
+    "version": "1.0.0",
+    "description": "A Node.js command-line application to generate a logo and save it as an SVG file",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "jest"
+    },
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "inquirer": "^8.2.4"
+    },
+    "devDependencies": {
+        "jest": "^27.2.5"
+    }
+}
