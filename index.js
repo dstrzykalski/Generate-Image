@@ -52,6 +52,3 @@ inquirer.prompt(questions).then(answers => {
     console.log('output.svg has been created!');
 }
 );
-
-module.exports = {
-    
