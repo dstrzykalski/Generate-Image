@@ -63,7 +63,7 @@ inquirer.prompt(questions).then(answers => {
 
     fs.writeFile('image.svg', svgFile, (err) => {
         if (err) throw err;
-        console.log('Text Test!');
+        console.log('Image Generated Successfully!');
     });
 }
 );
