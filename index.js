@@ -24,31 +24,26 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
     let shape;
-    switch (answers.shape) {
-        case 'Triangle':
-            shape = new triangle();
-            break;
-        case 'Circle':
-            shape = new circle();
-            break;
-        case 'Square':
-            shape = new square();
-            break;
-        case 'Rectangle':
-            shape = new rectangle();
-            break;
-        case 'Pentagon':
-            shape = new pentagon();
-            break;
-        case 'Hexagon':
-            shape = new hexagon();
-            break;
-        case 'Octagon':
-            shape = new octagon();
-            break;
+
+    if (answers.shape === 'Triangle') {
+        shape = new triangle();
+    } else if (answers.shape === 'Circle') {
+        shape = new circle();
+    } else if (answers.shape === 'Square') {
+        shape = new square();
+    } else if (answers.shape === 'Rectangle') {
+        shape = new rectangle();
+    } else if (answers.shape === 'Pentagon') {
+        shape = new pentagon();
+    } else if (answers.shape === 'Hexagon') {
+        shape = new hexagon();
+    } else if (answers.shape === 'Octagon') {
+        shape = new octagon();
     }
+
     shape.setColor(answers.color);
-    fs.writeFileSync('output.svg', shape.render());
-    console.log('output.svg has been created!');
+
+    fs.writeFileSync('shape.svg', shape.render());
 }
 );
+
