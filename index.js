@@ -10,6 +10,16 @@ const octagon = require('./lib/shapes').Octagon;
 
 const questions = [
     {
+        type: 'input',
+        name: 'name',
+        message: 'enter up to 3 characters'
+    },
+    {
+        type: 'input',
+        name: 'nameColor',
+        message: 'What color would you like the text?'
+    },
+    {
         type: 'list',
         name: 'shape',
         message: 'Which shape would you like to render?',
@@ -24,6 +34,7 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
     let shape;
+    let text
 
     if (answers.shape === 'Triangle') {
         shape = new triangle();
@@ -42,8 +53,18 @@ inquirer.prompt(questions).then(answers => {
     }
 
     shape.setColor(answers.color);
+    text = answers.name;
+    textColor = answers.nameColor;
 
-    fs.writeFileSync('shape.svg', shape.render());
+    const svgFile = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+    ${shape.render()}
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${answers.textColor}">${answers.text}</text>
+</svg>`
+
+    fs.writeFile('image.svg', svgFile, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+    });
 }
 );
 
